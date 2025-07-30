@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/index.py"
+    }
+  ],
+  "env": {
+    "OPENAI_API_KEY": "@openai_api_key",
+    "PINECONE_API_KEY": "@pinecone_api_key",
+    "PINECONE_INDEX_NAME": "@pinecone_index_name",
+    "DATABASE_URL": "@database_url"
+  }
+}
