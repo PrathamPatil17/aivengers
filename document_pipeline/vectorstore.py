@@ -2,7 +2,13 @@
 
 import os
 from dotenv import load_dotenv
-from pinecone import Pinecone
+try:
+    from pinecone import Pinecone, ServerlessSpec
+except ImportError:
+    # Fallback for older versions
+    import pinecone
+    Pinecone = pinecone.Pinecone
+    ServerlessSpec = pinecone.ServerlessSpec
 from document_pipeline.chunk_schema import DocumentChunk
 from concurrent.futures import ThreadPoolExecutor
 
